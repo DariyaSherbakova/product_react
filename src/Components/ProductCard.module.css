@@ -17,18 +17,10 @@
     background-size: cover;
   }
 
-  .actionBtn {
-    position: absolute;
-    bottom: 0;
-    width: 150px;
-    height: 40px;
-    margin: 0 auto;
-    margin-bottom: 1rem;
-    display: block;
-    align-self: center;
+
+  .detailBtn {
     background-color: var(--secondary-color);
-    border-radius: 8px;
-    outline: none;
-    border: none;
-    cursor: pointer;
+    position: absolute;
+    bottom: 1rem;
+    color: darkgray;
   }
