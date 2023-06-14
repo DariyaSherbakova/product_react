@@ -8,6 +8,7 @@ export const ProductList = () => {
   const [ currentPage, setCurrentPage ] = useState(1);
   const [sortDirection, setSortDirection] = useState('asc')
   const [sortedProducts, setSortedProducts] = useState(products)
+  const [searchQuery, setSearchQuery] = useState('')
 
   const categories = [...new Set(products.map((product) => product.category))];
   const limit = 30;
@@ -84,14 +85,35 @@ const handleSort = () => {
         {sortDirection === 'asc' ? 'Low to High' : 'High to Low' }
         
       </button>
+     
+     <input type="text"
+     placeholder='Search...'
+     className={styles.inputField}
+     value={searchQuery}
+     onChange={(e) => setSearchQuery(e.target.value) }
+      />
+
       </div>
 
 
+
       <div className={styles.cardsWrapper}>
-        {sortedProducts
-          .filter((product) => selectedCategory == '' || product.category === selectedCategory)
+      { searchQuery !== '' ?
+          sortedProducts
+              .filter((product) =>
+              product.title.toLowerCase().includes(searchQuery.toLowerCase())
+              )
+              .map((product) => (
+                <ProductCard key={product.id} product={product}/>
+              ))
+        :
+        sortedProducts
+          .filter(
+            (product) =>
+              selectedCategory == "" || product.category === selectedCategory
+          )
           .map((product) => (
-            <ProductCard key={ product.id } product={ product } />
+            <ProductCard key={product.id} product={product} />
           ))
         }
       </div>
@@ -109,97 +131,3 @@ const handleSort = () => {
 export default ProductList
 
 
-// import React, { useEffect, useState } from "react";
-// import ProductCard from "./ProductCard";
-// import styles from './ProductList.module.css';
-
-
-// const ProductList = () => {
-
-//     const [products, setProducts] = useState([])
-
-//     const [selectedCategory, setSelectedCategory] = useState([])
-//     const [currentPage, setCurrentPage] = useState(1)
-
-
-
-//     const limit = 30
-
-//     const categories = [...new Set(products.map((product) => product.category))]
-
-//     const fetchMoreProducts = async (limit, currentPage) => {
-//         try {
-//           setCurrentPage(currentPage + 1);
-//           if (currentPage > 3) {
-//             alert('No more products to load');
-//             return;
-//           }
-//           const response = await fetch(`https://dummyjson.com/products?limit=${limit}&skip=${currentPage * limit}`);
-//           const data = await response.json();
-//           setProducts([...products, ...data.products]);
-//         } catch (error) {
-//           console.error('Error fetching products:', error);
-//         }
-//       };
-
-
-//     useEffect(() => {
-//         fetch('https://dummyjson.com/products')
-//             .then((response) => response.json())
-//             .then((data) => {
-//                 setProducts(data.products)
-//                 console.log(data.products);
-//             })
-//             .catch((error) => {
-//                 console.log('Error fetching products', error)
-//             })
-//     }, [])
-
-//     const handleCategorySelect = (event) => {
-//         setSelectedCategory(event.target.value)
-//     }
-
-//     return (
-//         <div className={styles.listWrapper} >
-
-//             <div className={styles.controlsWrapper}>
-//                 <label htmlFor='category'>Filter by category:</label>
-//                 <select
-//                     id='category'
-//                     className={styles.inputField}
-//                     value={selectedCategory}
-//                     onChange={handleCategorySelect}
-//                 >
-//                     <option value=''>All</option>
-
-//                     {categories.map((category, index) => (
-//                         <option key={index} value={category}>
-//                             {category}
-//                         </option>
-//                     ))
-//                     }
-//                 </select>
-//             </div>
-
-//             <div className={styles.cardsWrapper} >
-
-//                 {products
-//                     .filter((product) => selectedCategory == '' || product.category === selectedCategory)
-//                     .map((product) => (
-//                         <ProductCard key={product.id} product={product} />
-//                     ))
-
-//                 }
-//             </div>
-
-//             <button className={styles.actionBtn}
-//                 onClick={fetchMoreProducts}
-//                 disabled={currentPage > 3}
-//             >
-//                 Load more...
-//             </button>
-
-//         </div>
-//     )
-// }
-// export default ProductList
