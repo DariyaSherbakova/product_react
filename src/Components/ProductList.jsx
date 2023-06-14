@@ -79,8 +79,8 @@ const handleSort = () => {
 
       <label>Sort by price:</label>
       <button  
-      onClick={handleSort}
-      className={styles.sortBtn}
+        onClick={handleSort}
+        className={`${styles.sortBtn} actionBtn`}
       >
         {sortDirection === 'asc' ? 'Low to High' : 'High to Low' }
         

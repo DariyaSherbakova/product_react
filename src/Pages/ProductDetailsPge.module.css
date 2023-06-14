@@ -1,0 +1,70 @@
+.backBtn {
+    width: 150px;
+    height: 40px;
+    margin: 0 auto;
+    margin-right: 1rem;
+    background-color: transparent;
+    border: 1px solid lightblue;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(204, 204, 204);
+    }
+  }
+
+  .listWrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    gap: 1rem;
+  }
+  
+  .inputField {
+    padding: 0.5rem;
+  }
+  
+  .sortBtn {
+    height: 40px;
+    background-color: rgb(75, 137, 230);
+    color: white;
+    outline: none;
+    border: none;
+    cursor: pointer;
+  
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  
+    &:hover {
+      background-color: var(--secondary-color) ;
+      color: black;
+    }
+  }
+  
+  .cardsWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .controlsWrapper {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .actionBtn {
+    width: var(--btn-width);
+    height: var(--btn-height);
+    background-color: var(--primary-color);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+  
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  }
