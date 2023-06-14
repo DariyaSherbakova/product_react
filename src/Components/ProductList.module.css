@@ -12,9 +12,20 @@
 .sortBtn {
   height: 40px;
   background-color: rgb(75, 137, 230);
+  color: white;
   outline: none;
   border: none;
   cursor: pointer;
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  &:hover {
+    background-color: var(--secondary-color) ;
+    color: black;
+  }
 }
 
 .cardsWrapper {
@@ -30,10 +41,10 @@
   gap: 1rem;
 }
 
-.main-action-btn {
-  width: 150px;
-  height: 40px;
-  background-color: rgb(75, 137, 230);
+.actionBtn {
+  width: var(--btn-width);
+  height: var(--btn-height);
+  background-color: var(--primary-color);
   outline: none;
   border: none;
   cursor: pointer;
