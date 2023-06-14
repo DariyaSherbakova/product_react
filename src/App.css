@@ -2,3 +2,22 @@
     max-width: 1200px;
     margin: 0, auto;
 }
+
+.actionBtn {
+    width: var(--btn-width);
+    height: var(--btn-height);
+    background-color: var(--primary-color);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+    color: white;
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+    &:hover {
+      background-color: var(--secondary-color);
+      color: rgb(61,61,61);
+    }
+  }
