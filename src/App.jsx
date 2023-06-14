@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
 import ProductDetailsPage from './Pages/ProductDetailsPage';
-import ContctPage from './Pages/ContactPage';
+import ContactPage from './Pages/ContactPage';
 import NotFoundPage from './Pages/NotFoundPage';
 import Header from './Components/Header';
 
@@ -18,7 +18,7 @@ function App() {
       <Route index element={<HomePage /> }/>
       <Route path='/products' element= {<HomePage />} />
       <Route path='/products/:id' element= {<ProductDetailsPage />} />
-      <Route path='/contact' element= {<ContctPage />} />
+      <Route path='/contact' element= {<ContactPage />} />
       <Route path='/*' element= {<NotFoundPage />} />
 
 
